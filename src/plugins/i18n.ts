@@ -2,6 +2,7 @@
 import { PluginParams } from '@/core/types';
 import Vue from 'vue';
 import VueI18n, { LocaleMessages } from 'vue-i18n';
+import Configurations from '@/core/configs';
 
 Vue.use(VueI18n);
 
@@ -19,8 +20,8 @@ function loadLocaleMessages(): LocaleMessages {
 }
 
 export const i18n = new VueI18n({
-  locale: process.env.VUE_APP_I18N_LOCALE || 'en',
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
+  locale: Configurations.i18n.locale || 'en',
+  fallbackLocale: Configurations.i18n.fallbackLocale || 'en',
   messages: loadLocaleMessages()
 });
 
