@@ -1,4 +1,4 @@
-# Pigeon Vue Cli Modular App Architecture (vue-cli-modular-app-architecture)
+# Vue Cli Modular App Architecture (vue-cli-modular-app-architecture)
 
 ## Project manager sample app
 
