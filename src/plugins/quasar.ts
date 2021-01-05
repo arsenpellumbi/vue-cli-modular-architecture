@@ -16,8 +16,10 @@ export default function() {
         progress: true,
         actions: [
           {
-            label: 'Dismiss',
+            icon: 'mdi-close',
             color: 'white',
+            flat: true,
+            round: true,
             handler: () => {
               /* ... */
             }
