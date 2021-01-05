@@ -2,7 +2,7 @@
 import { PluginParams } from '@/core/types';
 import Vue from 'vue';
 import VueI18n, { LocaleMessages } from 'vue-i18n';
-import Configurations from '@/core/configs';
+import Configurations from '@/core/configurations';
 
 Vue.use(VueI18n);
 

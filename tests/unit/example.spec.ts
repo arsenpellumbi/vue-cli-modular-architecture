@@ -1,12 +1,7 @@
-import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import MainLayout from '@/layouts/main-layout.vue';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    });
-    expect(wrapper.text()).toMatch(msg);
+describe('main-layout.vue', () => {
+  it('is a valid view', () => {
+    expect(MainLayout).toBeDefined();
   });
 });

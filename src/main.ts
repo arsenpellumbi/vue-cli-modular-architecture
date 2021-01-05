@@ -1,5 +1,5 @@
 import Vue, { ComponentOptions } from 'vue';
-import App from './App.vue';
+import App from './app.vue';
 import './registerServiceWorker';
 import createRouter from './router';
 import createStore from './store';
@@ -9,6 +9,7 @@ import bootI18n from './plugins/i18n';
 import bootAxios from './plugins/axios';
 import bootToast from './plugins/toast';
 import bootQuasar from './plugins/quasar';
+import bootComponents from './plugins/components';
 import { RawLocation } from 'vue-router/types/router';
 
 Vue.config.devtools = true;
@@ -36,7 +37,7 @@ function start() {
   };
 
   const urlPath = window.location.href.replace(window.location.origin, '');
-  const bootFiles = [bootCompositionapi, bootI18n, bootAxios, bootToast, bootQuasar];
+  const bootFiles = [bootCompositionapi, bootI18n, bootAxios, bootToast, bootQuasar, bootComponents];
 
   for (let i = 0; hasRedirected === false && i < bootFiles.length; i++) {
     if (typeof bootFiles[i] !== 'function') {

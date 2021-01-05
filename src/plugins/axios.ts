@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PluginParams } from '@/core/types';
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import apiInterceptors from '../core/api/ApiInterceptors';
+import apiInterceptors from '../core/api/api-interceptors';
 
 declare module 'vue/types/vue' {
   interface Vue {

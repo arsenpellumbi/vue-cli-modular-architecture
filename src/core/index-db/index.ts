@@ -1,4 +1,6 @@
-import { IndexDbServiceInstance } from './IndexDbService';
+import { IndexDbInstance } from './index-db';
 
-export * from './IndexDbService.types';
-export default new IndexDbServiceInstance();
+export * from './index-db.types';
+
+const indexDb = new IndexDbInstance();
+export default indexDb;

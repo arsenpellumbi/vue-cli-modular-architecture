@@ -1,5 +1,5 @@
 import { PluginParams } from '@/core/types';
-import toastHelper, { ToastHelper } from '../core/helpers/ToastHelper';
+import toastHelper, { ToastHelper } from '../core/helpers/toast-helper';
 
 declare module 'vue/types/vue' {
   interface Vue {
