@@ -3,13 +3,6 @@ import App from './app.vue';
 import './registerServiceWorker';
 import createRouter from './router';
 import createStore from './store';
-
-import bootCompositionapi from './plugins/composition-api';
-import bootI18n from './plugins/i18n';
-import bootAxios from './plugins/axios';
-import bootToast from './plugins/toast';
-import bootQuasar from './plugins/quasar';
-import bootComponents from './plugins/components';
 import { RawLocation } from 'vue-router/types/router';
 
 Vue.config.devtools = true;
@@ -37,29 +30,21 @@ function start() {
   };
 
   const urlPath = window.location.href.replace(window.location.origin, '');
-  const bootFiles = [bootCompositionapi, bootI18n, bootAxios, bootToast, bootQuasar, bootComponents];
-
-  for (let i = 0; hasRedirected === false && i < bootFiles.length; i++) {
-    if (typeof bootFiles[i] !== 'function') {
+  console.info('Booting plugins.');
+  const requirePlugin = require.context('./plugins', false, /[\w-]+\.ts$/);
+  const pluginFiles = requirePlugin.keys();
+  for (let i = 0; hasRedirected === false && i < pluginFiles.length; i++) {
+    const plugin = requirePlugin(pluginFiles[i]);
+    if (typeof plugin.default !== 'function') {
       continue;
     }
-
     try {
-      bootFiles[i]({
-        app,
-        router,
-        store,
-        Vue,
-        redirect,
-        urlPath,
-        publicPath
-      });
+      plugin.default({ app, router, store, Vue, redirect, urlPath, publicPath });
     } catch (err) {
       if (err && err.url) {
         window.location.href = err.url;
         return;
       }
-
       console.error('boot error:', err);
       return;
     }
@@ -69,11 +54,7 @@ function start() {
     return;
   }
 
-  new Vue({
-    router,
-    store,
-    render: h => h(App)
-  }).$mount('#app');
+  new Vue(app).$mount('#app');
 }
 
 start();

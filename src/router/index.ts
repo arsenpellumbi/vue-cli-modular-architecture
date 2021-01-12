@@ -1,10 +1,10 @@
-import { moduleProvider } from '@/modules';
 import { AppStoreState } from '@/store';
 import VueRouter, { Route, RouteConfig, Location, RawLocation } from 'vue-router';
 import { Store } from 'vuex';
 import routes from './routes';
 import navigationGuard from './navigation-guards';
 import { VueConstructor } from 'vue/types/vue';
+import { useModuleProvider } from '@/modules';
 
 /*
  * If not building with SSR mode, you can
@@ -14,6 +14,7 @@ import { VueConstructor } from 'vue/types/vue';
 export default function({ store, Vue }: { store: Store<AppStoreState>; Vue: VueConstructor }) {
   Vue.use(VueRouter);
 
+  const moduleProvider = useModuleProvider();
   const moduleRoutes: RouteConfig[] = moduleProvider.getRoutes();
   const definedRoutes = [...moduleRoutes, ...routes];
   const router = new VueRouter({

@@ -1,6 +1,5 @@
-import { moduleProvider } from '@/modules';
 import { VueConstructor } from 'vue/types/umd';
-import Vuex, { ModuleTree } from 'vuex';
+import Vuex from 'vuex';
 
 /*
  * If not building with SSR mode, you can
@@ -14,14 +13,10 @@ export interface AppStoreState {
 export default function({ Vue }: { Vue: VueConstructor }) {
   Vue.use(Vuex);
 
-  const storeModules: ModuleTree<AppStoreState> = moduleProvider.getStoreModules();
-  const definedModules = { ...storeModules };
-
   const store = new Vuex.Store({
     state: {
       version: 1
     },
-    modules: definedModules,
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: !!process.env.DEBUGGING
